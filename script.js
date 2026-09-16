@@ -7,8 +7,13 @@ const burningEnvelope = document.getElementById('burningEnvelope');
 const invitation = document.getElementById('invitation');
 
 seal.addEventListener('click', () => {
-  // The seal remains intact. No breaking/cracking animation.
+  seal.classList.add('broken');
+  document.querySelector('.seal-large')?.classList.add('broken');
   envelope.classList.add('open');
+  seal.animate(
+    [{filter:'brightness(1)'},{filter:'brightness(1.9)',offset:.35},{filter:'brightness(.7)'}],
+    {duration:2200,easing:'cubic-bezier(.16,1,.3,1)'}
+  );
   setTimeout(() => {
     envelopeScene.classList.add('hidden');
     scrollScene.classList.remove('hidden');
@@ -19,7 +24,7 @@ seal.addEventListener('click', () => {
 function openScroll(){
   if(scrollTeaser.classList.contains('activated')) return;
 
-  // The scroll opens on its own. The envelope does not burn.
+  // The scroll rises out of the envelope while it burns away underneath it.
   scrollTeaser.classList.add('activated');
 
   setTimeout(() => {
