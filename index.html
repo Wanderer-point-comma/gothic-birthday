@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Готический бал — приглашение</title>
+  <meta name="theme-color" content="#08080a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- SCENE 1 -->
+  <main id="envelopeScene" class="scene envelope-scene">
+    <div class="moon-glow"></div>
+    <div class="ornament ornament-envelope">
+      <img src="assets/ornament-silver.png" alt="">
+    </div>
+
+    <section class="envelope-wrap" aria-label="Закрытый конверт">
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-front"></div>
+        <button id="seal" class="seal" aria-label="Открыть приглашение">
+          <span>✦</span>
+        </button>
+      </div>
+      <p class="hint">нажмите на печать</p>
+    </section>
+  </main>
+
+  <!-- SCENE 2 -->
+  <section id="scrollScene" class="scene reveal-scene hidden">
+    <div class="ember-field"></div>
+    <div id="burningEnvelope" class="burning-envelope">
+      <div class="mini-envelope"></div>
+    </div>
+
+    <div id="scrollTeaser" class="scroll-teaser" role="button" tabindex="0" aria-label="Развернуть свиток">
+      <div class="roll top-roll"></div>
+      <div class="parchment-teaser">
+        <img src="assets/scroll-frame.png" alt="">
+        <div class="teaser-title">ВАШЕ ПРИГЛАШЕНИЕ</div>
+        <div class="teaser-sub">кликните, чтобы открыть</div>
+      </div>
+      <div class="roll bottom-roll"></div>
+    </div>
+  </section>
+
+  <!-- SCENE 3 + 4 -->
+  <section id="invitation" class="invitation hidden">
+    <div class="paper">
+      <img class="paper-ornament" src="assets/scroll-frame.png" alt="">
+      <div class="paper-content">
+        <div class="eyebrow">ВЕЧЕР, КОТОРЫЙ СТОИТ ЗАПОМНИТЬ</div>
+        <h1>Готический<br><em>бал</em></h1>
+        <div class="bat-divider">⌁  🦇  ⌁</div>
+
+        <p>
+          Здравствуй, мой дорогой гость!
+        </p>
+
+        <p>
+          Вы приглашены на празднество в честь моего <strong>1800-летия</strong>.
+        </p>
+
+        <p>
+          Однако не ждите обычного застолья — вас ждёт готический бал,
+          сотканный из мрака, загадки и ужасной красоты.
+        </p>
+
+        <p>
+          Дорогой гость, дарую полную волю вашей фантазии.
+          Приходите в образе вампира, графа, аристократа или того,
+          кого вы встретили бы в мрачном замке, окутанного слухами
+          о вампирах и прочей нечести.
+        </p>
+
+        <div class="details">
+          <div><span>КОГДА</span><strong>[дата], сбор с [время]</strong></div>
+          <div><span>ГДЕ</span><strong>[адрес]</strong></div>
+        </div>
+
+        <div class="dress-code">
+          <div class="small-title">ДРЕСС-КОД</div>
+          <p>
+            Не обременяю вас строгим дресс-кодом, но буду рада,
+            если вы поддержите цветовую гамму:
+          </p>
+
+          <div class="palette-title">ЦВЕТОВАЯ ПАЛИТРА</div>
+          <div class="palette" aria-label="Цветовая палитра">
+            <i style="--c:#050505"></i>
+            <i style="--c:#570A11"></i>
+            <i style="--c:#A3454E"></i>
+            <i style="--c:#5B2C48"></i>
+            <i style="--c:#970D18"></i>
+            <i style="--c:#B8A99A"></i>
+            <i style="--c:#958686"></i>
+            <i style="--c:#E7E7E3"></i>
+          </div>
+          <div class="palette-labels"><span>BLACK</span><span>BURGUNDY</span><span>SILVER</span></div>
+        </div>
+
+        <p>
+          Желаю не вам стать жертвой этой ночи.
+        </p>
+
+        <p>
+          С любовью,<br>
+          ваша готическая принцесса 🖤
+        </p>
+      </div>
+    </div>
+
+    <footer class="finale">
+      <img src="assets/ornament-silver.png" alt="">
+      <div class="final-text">
+        <div class="eyebrow">И НАКОНЕЦ...</div>
+        <h2>Буду рада<br><em>видеть вас</em></h2>
+        <p>До встречи за полночь.</p>
+        <div class="tiny-bat">🦇</div>
+      </div>
+      <img src="assets/ornament-silver.png" alt="">
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
