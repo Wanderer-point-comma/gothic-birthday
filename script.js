@@ -8,12 +8,12 @@ const invitation = document.getElementById('invitation');
 
 seal.addEventListener('click', () => {
   envelope.classList.add('open');
-  seal.animate([{filter:'brightness(1)'},{filter:'brightness(1.9)',offset:.35},{filter:'brightness(.7)'}],{duration:900,easing:'ease-out'});
+  seal.animate([{filter:'brightness(1)'},{filter:'brightness(1.9)',offset:.35},{filter:'brightness(.7)'}],{duration:2200,easing:'cubic-bezier(.16,1,.3,1)'});
   setTimeout(() => {
     envelopeScene.classList.add('hidden');
     scrollScene.classList.remove('hidden');
     window.scrollTo({top:0, behavior:'instant'});
-  }, 1050);
+  }, 3000);
 });
 
 function openScroll(){
@@ -28,7 +28,7 @@ function openScroll(){
     scrollScene.classList.add('hidden');
     invitation.classList.remove('hidden');
     window.scrollTo({top:0, behavior:'instant'});
-  }, 1500);
+  }, 5000);
 }
 scrollTeaser.addEventListener('click', openScroll);
 scrollTeaser.addEventListener('keydown', e => {
