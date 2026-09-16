@@ -18,15 +18,22 @@ seal.addEventListener('click', () => {
 
 function openScroll(){
   if(scrollTeaser.classList.contains('activated')) return;
+
+  // The scroll rises out of the envelope first; the burning effect runs underneath it.
   scrollTeaser.classList.add('activated');
   burningEnvelope.classList.add('burn');
+
+  // Let the extraction/burning animation finish before revealing the invitation.
   setTimeout(() => {
     scrollScene.classList.add('hidden');
     invitation.classList.remove('hidden');
     window.scrollTo({top:0, behavior:'instant'});
-  }, 1450);
+  }, 1500);
 }
 scrollTeaser.addEventListener('click', openScroll);
 scrollTeaser.addEventListener('keydown', e => {
-  if(e.key === 'Enter' || e.key === ' ') openScroll();
+  if(e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openScroll();
+  }
 });
