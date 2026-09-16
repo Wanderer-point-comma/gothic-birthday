@@ -349,3 +349,130 @@ body{background:#030303}
   .candle-atmosphere:before{filter:blur(26px)}
   .candle-atmosphere:after{filter:blur(15px)}
 }
+
+
+/* ================= V11 — ultra smooth cinematic pass ================= */
+/* Keep the approved visual design; this layer only fixes motion, responsiveness and effects. */
+
+/* The scroll must fit the viewport on phones without being cropped. */
+.reveal-scene{min-height:100svh;min-height:100dvh;padding:7svh 0 8svh}
+.scroll-teaser{
+  width:min(58vw,560px);
+  max-height:78svh;
+  margin:auto;
+  transform-origin:50% 50%;
+}
+.parchment-teaser{max-height:72svh}
+.parchment-teaser>img{object-fit:contain}
+
+/* No visible candle objects: atmosphere only. */
+.candle-atmosphere{pointer-events:none;opacity:1}
+.candle-atmosphere:before{
+  content:"";position:absolute;inset:-20%;
+  background:
+    radial-gradient(circle at 5% 25%,rgba(173,48,35,.13) 0 2%,transparent 15%),
+    radial-gradient(circle at 95% 29%,rgba(173,48,35,.11) 0 2%,transparent 15%),
+    radial-gradient(circle at 15% 78%,rgba(99,17,29,.17) 0 2%,transparent 19%),
+    radial-gradient(circle at 87% 76%,rgba(99,17,29,.15) 0 2%,transparent 19%);
+  filter:blur(48px);animation:ambientV11 22s ease-in-out infinite alternate
+}
+.candle-atmosphere:after{
+  content:"";position:absolute;inset:-10%;
+  background:
+    radial-gradient(circle at 9% 50%,rgba(235,157,91,.055),transparent 8%),
+    radial-gradient(circle at 91% 50%,rgba(235,157,91,.05),transparent 8%),
+    radial-gradient(ellipse at 50% 90%,rgba(129,23,29,.10),transparent 26%);
+  filter:blur(28px);animation:lightBreathV11 7.5s ease-in-out infinite
+}
+
+/* Seal: a subtle physical fracture, not a generic spin. */
+.seal.broken{animation:sealBreakV11 1.15s cubic-bezier(.2,.7,.2,1) both;pointer-events:none}
+.seal-large.broken{animation:sealCrackV11 1.15s cubic-bezier(.2,.7,.2,1) both}
+.seal.broken:before,.seal.broken:after{content:"";position:absolute;left:50%;top:50%;width:46%;height:2px;background:rgba(226,228,231,.82);box-shadow:0 0 8px rgba(226,228,231,.35);transform-origin:left center;opacity:0;z-index:2}
+.seal.broken:before{transform:translate(-3%,-50%) rotate(18deg)}
+.seal.broken:after{transform:translate(-3%,-50%) rotate(-27deg);width:34%}
+.seal.broken:before{animation:crackInV11 .7s .18s ease-out forwards}
+.seal.broken:after{animation:crackInV11 .65s .26s ease-out forwards}
+
+/* One continuous, slow motion language. */
+.envelope.open{animation:envelopeOpenV11 3.6s cubic-bezier(.22,.72,.18,1) both}
+.scroll-teaser{animation:scrollArrivalV11 3.6s cubic-bezier(.22,.72,.18,1) both}
+.scroll-teaser.activated{animation:scrollExtractV11 6.2s cubic-bezier(.22,.72,.18,1) both}
+.reveal-scene:has(.scroll-teaser.activated) .burning-envelope{animation:burnEnvelopeV11 6.2s cubic-bezier(.22,.72,.18,1) forwards}
+.reveal-scene:has(.scroll-teaser.activated) .ember-field:before{animation:embersV11 6.2s ease-out forwards}
+.reveal-scene:has(.scroll-teaser.activated) .ember-field:after{animation:glowV11 6.2s ease-in-out forwards}
+
+/* Burn from the perimeter inward; leave a dark charred remnant. */
+.burning-envelope{
+  -webkit-mask-image:radial-gradient(ellipse at 50% 48%,#000 0 32%,rgba(0,0,0,.97) 40%,rgba(0,0,0,.72) 52%,rgba(0,0,0,.25) 66%,transparent 78%);
+  mask-image:radial-gradient(ellipse at 50% 48%,#000 0 32%,rgba(0,0,0,.97) 40%,rgba(0,0,0,.72) 52%,rgba(0,0,0,.25) 66%,transparent 78%);
+  -webkit-mask-size:105% 105%;mask-size:105% 105%;
+}
+.burning-envelope:before{opacity:0;content:"";position:absolute;inset:-5%;pointer-events:none;background:
+  radial-gradient(ellipse at 4% 42%,rgba(255,203,135,.95) 0 1.2%,rgba(213,54,25,.78) 3%,transparent 11%),
+  radial-gradient(ellipse at 96% 47%,rgba(255,184,101,.88) 0 1.2%,rgba(204,47,25,.72) 3%,transparent 11%),
+  radial-gradient(ellipse at 30% 97%,rgba(255,213,142,.86) 0 1.1%,rgba(190,42,23,.68) 3%,transparent 13%),
+  radial-gradient(ellipse at 72% 97%,rgba(255,174,75,.82) 0 1%,rgba(178,36,22,.65) 3%,transparent 12%);filter:blur(5px);mix-blend-mode:screen}
+.burning-envelope:after{opacity:0;content:"";position:absolute;inset:-2%;pointer-events:none;background:
+  radial-gradient(ellipse at 7% 46%,rgba(255,92,34,.44),transparent 12%),
+  radial-gradient(ellipse at 93% 50%,rgba(255,76,27,.4),transparent 12%),
+  radial-gradient(ellipse at 32% 97%,rgba(255,145,44,.32),transparent 15%),
+  radial-gradient(ellipse at 70% 97%,rgba(255,115,34,.28),transparent 14%);filter:blur(12px);mix-blend-mode:screen}
+
+@keyframes sealBreakV11{
+  0%{transform:translate(-50%,-50%) scale(1);filter:brightness(1)}
+  28%{transform:translate(-50%,-50%) scale(1.035) rotate(-1deg);filter:brightness(1.22)}
+  48%{transform:translate(-50%,-50%) scale(.99) rotate(1.2deg);filter:brightness(1.08)}
+  100%{transform:translate(-50%,-50%) scale(.76) rotate(-2deg);opacity:0;filter:brightness(.72)}
+}
+@keyframes sealCrackV11{
+  0%,38%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 5px 7px rgba(0,0,0,.7))}
+  52%{transform:translate(calc(-50% - 2px),calc(-50% + 1px)) scale(1.02);filter:drop-shadow(0 0 10px rgba(226,228,231,.4))}
+  100%{transform:translate(calc(-50% + 3px),calc(-50% + 1px)) scale(.88);opacity:0}
+}
+@keyframes crackInV11{from{opacity:0;transform-origin:left center;clip-path:inset(0 100% 0 0)}to{opacity:.8;clip-path:inset(0 0 0 0)}}
+@keyframes envelopeOpenV11{
+  0%{transform:translate3d(0,0,0) scale(1);opacity:1;filter:brightness(1) drop-shadow(0 35px 45px rgba(0,0,0,.86))}
+  24%{transform:translate3d(0,-2px,0) scale(1.006);opacity:1;filter:brightness(1.04) drop-shadow(0 37px 48px rgba(0,0,0,.88))}
+  62%{transform:translate3d(0,-7px,0) scale(.992);opacity:.98;filter:brightness(.98) drop-shadow(0 40px 52px rgba(0,0,0,.9))}
+  84%{transform:translate3d(0,-13px,0) scale(.975);opacity:.48;filter:blur(.35px) brightness(.9) drop-shadow(0 40px 55px rgba(0,0,0,.9))}
+  100%{transform:translate3d(0,-18px,0) scale(.96);opacity:0;filter:blur(1px) brightness(.76) drop-shadow(0 40px 55px rgba(0,0,0,.9))}
+}
+@keyframes scrollArrivalV11{
+  0%{transform:translate3d(0,10%,0) scale(.975);opacity:0;filter:blur(2px) drop-shadow(0 28px 38px rgba(0,0,0,.82))}
+  32%{opacity:.35}
+  68%{transform:translate3d(0,2%,0) scale(.99);opacity:.9;filter:blur(.5px) drop-shadow(0 34px 46px rgba(0,0,0,.88))}
+  100%{transform:translate3d(0,0,0) scale(1);opacity:1;filter:blur(0) drop-shadow(0 35px 48px rgba(0,0,0,.9))}
+}
+@keyframes scrollExtractV11{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  22%{transform:translate3d(0,-.8%,0) scale(1.004)}
+  50%{transform:translate3d(0,-3%,0) scale(1.012)}
+  78%{transform:translate3d(0,-6%,0) scale(1.018)}
+  100%{transform:translate3d(0,-10%,0) scale(1.022)}
+}
+@keyframes burnEnvelopeV11{
+  0%{opacity:1;transform:translateX(-50%) translateY(0) scale(1);filter:brightness(1) saturate(1) drop-shadow(0 24px 42px rgba(0,0,0,.9));-webkit-mask-size:105% 105%;mask-size:105% 105%}
+  20%{opacity:1;filter:brightness(1.06) saturate(1.05) drop-shadow(0 0 15px rgba(188,48,24,.18));-webkit-mask-size:102% 102%;mask-size:102% 102%}
+  44%{opacity:.94;transform:translateX(-50%) translateY(3px) scale(.99);filter:brightness(1.15) saturate(1.05) drop-shadow(0 0 23px rgba(188,48,24,.26));-webkit-mask-size:95% 95%;mask-size:95% 95%}
+  67%{opacity:.68;transform:translateX(-50%) translateY(7px) scale(.97);filter:brightness(1.2) saturate(.92) blur(.25px) drop-shadow(0 0 30px rgba(170,39,22,.24));-webkit-mask-size:82% 82%;mask-size:82% 82%}
+  84%{opacity:.43;transform:translateX(-50%) translateY(12px) scale(.945);filter:brightness(1.05) saturate(.78) blur(.55px);-webkit-mask-size:69% 69%;mask-size:69% 69%}
+  100%{opacity:.25;transform:translateX(-50%) translateY(17px) scale(.92);filter:brightness(.68) saturate(.55) blur(.8px);-webkit-mask-size:56% 56%;mask-size:56% 56%}
+}
+@keyframes ambientV11{0%{transform:translate3d(-1%,0,0) scale(1)}50%{transform:translate3d(1%,1%,0) scale(1.035)}100%{transform:translate3d(-.5%,-1%,0) scale(1.02)}}
+@keyframes lightBreathV11{0%,100%{opacity:.38;transform:scale(.985)}50%{opacity:.7;transform:scale(1.025)}}
+@keyframes embersV11{0%{opacity:0;transform:translateY(10px)}25%{opacity:.45}65%{opacity:.25}100%{opacity:0;transform:translateY(-75px)}}
+@keyframes glowV11{0%{opacity:0;transform:scale(.88)}35%{opacity:.32}65%{opacity:.18}100%{opacity:0;transform:scale(1.16)}}
+
+@media(max-width:700px){
+  .reveal-scene{padding:3svh 0 5svh}
+  .scroll-teaser{width:min(88vw,480px);max-height:84svh}
+  .parchment-teaser{max-height:79svh}
+  .scene-title{top:3%;transform:scale(.88)}
+  .bottom-mark{bottom:2%}
+}
+@media(max-height:720px) and (max-width:700px){
+  .scroll-teaser{width:min(76vw,420px);max-height:82svh}
+  .parchment-teaser{max-height:76svh}
+  .scene-title{display:none}
+}

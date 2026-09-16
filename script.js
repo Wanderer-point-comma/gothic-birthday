@@ -7,6 +7,8 @@ const burningEnvelope = document.getElementById('burningEnvelope');
 const invitation = document.getElementById('invitation');
 
 seal.addEventListener('click', () => {
+  seal.classList.add('broken');
+  document.querySelector('.seal-large')?.classList.add('broken');
   envelope.classList.add('open');
   seal.animate([{filter:'brightness(1)'},{filter:'brightness(1.9)',offset:.35},{filter:'brightness(.7)'}],{duration:2200,easing:'cubic-bezier(.16,1,.3,1)'});
   setTimeout(() => {
@@ -22,6 +24,7 @@ function openScroll(){
   // The scroll rises out of the envelope first; the burning effect runs underneath it.
   scrollTeaser.classList.add('activated');
   burningEnvelope.classList.add('burn');
+  scrollTeaser.classList.add('cinematic-burn');
 
   // Let the extraction/burning animation finish before revealing the invitation.
   setTimeout(() => {
