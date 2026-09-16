@@ -151,7 +151,8 @@ body{background:#030303}
  radial-gradient(ellipse at 50% 82%,rgba(153,37,29,.07),transparent 30%),
  linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.42));}
 .envelope-scene>.velvet,.reveal-scene>.velvet{z-index:0}
-.envelope-wrap,.scroll-teaser,.burning-envelope,.scene-title,.paper-shell,.final-frame,.hint,.bottom-mark{position:relative;z-index:3}
+.envelope-wrap,.scroll-teaser,.paper-shell,.final-frame,.hint{position:relative;z-index:3}
+.burning-envelope,.scene-title,.bottom-mark{z-index:3}
 
 /* Slow camera-like motion: no abrupt snapping. */
 .envelope{transition:transform 1.5s cubic-bezier(.22,.61,.36,1),filter 1.5s cubic-bezier(.22,.61,.36,1)}
