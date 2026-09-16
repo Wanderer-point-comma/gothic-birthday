@@ -476,3 +476,33 @@ body{background:#030303}
   .parchment-teaser{max-height:76svh}
   .scene-title{display:none}
 }
+
+
+/* ================= V12 — remove seal break + envelope burn ================= */
+/* The approved design keeps the wax seal intact and removes every burning effect. */
+.seal.broken,
+.seal-large.broken{
+  animation:none !important;
+}
+.seal.broken:before,
+.seal.broken:after{
+  display:none !important;
+  animation:none !important;
+}
+
+/* No burn mask, flames, embers or envelope-burning transition. */
+.burning-envelope{
+  display:none !important;
+  animation:none !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+}
+.ember-field{
+  display:none !important;
+}
+.reveal-scene:has(.scroll-teaser.activated) .burning-envelope,
+.reveal-scene:has(.scroll-teaser.activated) .ember-field:before,
+.reveal-scene:has(.scroll-teaser.activated) .ember-field:after{
+  animation:none !important;
+  opacity:0 !important;
+}
